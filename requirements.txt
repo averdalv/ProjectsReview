@@ -1,0 +1,4 @@
+networkx
+django
+gunicorn
+django-heroku
