@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1 class="display-2">Project</h1>
+</div>
+<div class="jumbotron">
+<div class="row">
+  <h4>  Name: {{ project.name }}</h4>
+</div>
+<div class="row">
+<ul class="list-group"><h4>Acceptable languages:</h4>
+{% for language in acceptable_languages %}
+    <li class="list-group-item">{{language.name}}</li>
+ {% endfor %}
+</ul>
+</div>
+{% if project.additional_requierements %}
+<div class="row">
+    <h3>Additional requirements: {{ project.additional_requierements }}</h3>
+</div>
+{% endif %}
+<div class="row">
+<h3>Deadline: {{ project.deadline }}</h3>
+</div>
+{% if project.filename %}
+    <div class="row">
+        <h3>Attached file: <a href="/download/{{ project.filename }}">{{ project.filename }}</a></h3>
+    </div>
+{% endif %}
+{% if students %}
+
+    <div class="row">
+    <h3>Assigned users:</h3>
+    {% for student in students %}
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{ student.user.username }}
+            </li>
+        </ul>
+        {% endfor %}
+</div>
+{% endif %}
+</div>
+{% endblock %}

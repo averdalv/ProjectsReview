@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<h1>Projects</h1>
+{% if projects %}
+            <ul class="list-group">
+                {% for project in projects %}
+ 		            <li class="list-group-item"><a href="/project/{{ project.id }}">{{ project}}</a></li>
+                {% endfor %}
+            </ul>
+    {% else %}
+    <h2>System doesn't contain projects</h2>
+{% endif %}
+    {% if user.is_authenticated and user.is_superuser %}
+    <hr/>
+    <a class="btn btn-primary" href="{% url 'assign_preferences' %}">Distribute</a>
+    {% endif %}
+</div>
+{% endblock %}

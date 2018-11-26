@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to web site for managing projects</h1>
+  <p class="lead">If you are a client you can add your project:</p>
+    {% if user.is_authenticated %}
+		{% if user.isClient %}
+         <a class="btn btn-primary" href="{% url 'add_project' %}">Add project</a>
+        {% endif %}
+    {% endif %}
+
+<p class="lead">If you are a student you can review all projects:</p>
+{% if user.is_authenticated %}
+		{% if user.isStudent %}
+         <a class="btn btn-primary" href="{% url 'projects' %}">Projects </a>
+        {% endif %}
+    {% else %}
+        <p class="lead">If you are not registred:</p>
+        <a class="btn btn-primary" href="{% url 'registration' %}">Sign up</a>
+    {% endif %}
+  <hr class="my-4">
+  <p class="lead">If you are admin you can distribute students to projects</p>
+{% if user.is_superuser %}
+    <a class="btn btn-primary" href="{% url 'assign_preferences' %}">Distribute</a>
+{% endif %}
+</div>
+{% endblock %}

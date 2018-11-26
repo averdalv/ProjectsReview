@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<h4>Student: {{ student.user.username }}</h4>
+<form id="preferences" novalidate action="{% url 'project_preferences' %}" method="post">
+    {% csrf_token %}
+  <div class="form-group row">
+    <label for="pref1">Preference 1</label>
+    <select class="form-control" id="pref1" name="pref1">
+      {% for project in projects %}
+          <option value="{{ project.id }}">{{ project.name }}</option>
+        {% endfor %}
+    </select>
+  </div>
+<div class="form-group row">
+    <label for="pref2">Preference 2</label>
+    <select class="form-control" id="pref2" name="pref2">
+      {% for project in projects %}
+          <option value="{{ project.id }}">{{ project.name }}</option>
+        {% endfor %}
+    </select>
+  </div>
+<div class="form-group row">
+    <label for="pref3">Preference 3</label>
+    <select class="form-control" id="pref3" name="pref3">
+      {% for project in projects %}
+          <option value="{{ project.id }}">{{ project.name }}</option>
+        {% endfor %}
+    </select>
+  </div>
+<div class="form-group row">
+    <label for="pref4">Preference 4</label>
+    <select class="form-control" id="pref4" name="pref4">
+      {% for project in projects %}
+          <option value="{{ project.id }}">{{ project.name }}</option>
+        {% endfor %}
+    </select>
+  </div>
+<div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" id="submit" class="btn btn-success">Submit</button>
+    </div>
+  </div>
+</form>
+</div>
+{% endblock %}

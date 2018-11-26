@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+ <h1>Registration:</h1>
+
+<form id="projectDetalis" novalidate action="{% url 'registration' %}" method="post">
+    {% csrf_token %}
+  <div class="form-group row">
+    <label for="username" class="col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name='username' id="username" placeholder="Username" required>
+	  <div class="invalid-feedback">You should input user name</div>
+	  <div class="valid-feedback"></div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="email" name='email' placeholder="Email" type="email" required>
+	   <div class="invalid-feedback">You should input email</div>
+	  <div class="valid-feedback"></div>
+    </div>
+  </div>
+    <div class="form-group row">
+        <label for="first_name" class="col-sm-2 col-form-label">First name</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="first_name" name='first_name' placeholder="First name" type="text">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="last_name" class="col-sm-2 col-form-label">Last name</label>
+        <div class="col-sm-10">
+          <input class="form-control" id="last_name" name='last_name' placeholder="Last name" type="text" required>
+           <div class="invalid-feedback">You should input last name</div>
+          <div class="valid-feedback"></div>
+        </div>
+    </div>
+  <div class="form-group row">
+    <label for="password" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="password" name='password' placeholder="Password" type="password" required>
+	   <div class="invalid-feedback">You should input password</div>
+	  <div class="valid-feedback"></div>
+    </div>
+  </div>
+
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0"></legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="radio" id="studentRadio" value="student" checked>
+          <label class="form-check-label" for="studentRadio">
+            Student
+          </label>
+
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="radio" id="clientRadio" value="client">
+          <label class="form-check-label" for="clientRadio">
+            Client
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" id="submit" class="btn btn-success">Sign up</button>
+    </div>
+  </div>
+</form>
+
+</div>
+<div class="container">
+<p class="error" style="color: red;">{{ errorMessage }}</p>
+</div>
+{% endblock %}

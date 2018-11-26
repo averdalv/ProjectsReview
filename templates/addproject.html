@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+ <div class="container">
+ <h1>Project details:</h1>
+
+<form id="projectDetalis" novalidate action="{% url 'add_project' %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+  <div class="form-group row">
+    <label for="projectName" class="col-sm-2 col-form-label">Project name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="projectName" placeholder="Project name" name="name" required>
+	  <div class="invalid-feedback">You should input project name</div>
+	  <div class="valid-feedback"></div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">Acceptable programming languages</div>
+    <div class="col-sm-10">
+      {% for language in languages %}
+          <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="{{ language.id}}" name="language" value="{{ language.id }}">
+        <label class="form-check-label" for="{{ language.id}}">
+			{{ language.name }}
+        </label>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="form-group row">
+  <label for="example-datetime-local-input" class="col-sm-2 col-form-label">Deadline</label>
+  <div class="col-sm-10">
+    <input class="form-control" type="datetime-local"  id="example-datetime-local-input" name="deadline" required>
+	 <div class="invalid-feedback">You should input deadline</div>
+	  <div class="valid-feedback"></div>
+  </div>
+</div>
+  <div class="form-group row">
+    <label for="additionalRequerements" class="col-sm-2 col-form-label">Additional requerements</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="additionalRequerements" placeholder="Additional requerements" name="additional_requierements">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="controlFile" class="col-sm-2 col-form-label">File</label>
+  <div class="col-sm-10">
+    <input type="file" class="filestyle" id="controlFile" name="file">
+	</div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" id="submit" class="btn btn-primary">Submit project</button>
+    </div>
+  </div>
+</form>
+
+</div>
+{% endblock %}
