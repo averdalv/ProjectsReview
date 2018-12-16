@@ -1,1 +1,1 @@
-web: python website/manage.py runserver https://project-review-lab.herokuapp.com/
+web: python website/manage.py runserver 192.162.115.227
